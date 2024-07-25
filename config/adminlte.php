@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'IDI Jawa Barat',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>IDI Jawa Barat</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -322,7 +322,28 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'PENGELOLAAN'],
+        [
+            'text' => 'Surat Masuk',
+            'url' => 'suratmasuk',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Surat Keluar',
+            'url' => 'suratkeluar',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Pengurus',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Cabang',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        ['header' => 'PENGATURAN'],
         [
             'text' => 'profile',
             'url' => 'admin/settings',
