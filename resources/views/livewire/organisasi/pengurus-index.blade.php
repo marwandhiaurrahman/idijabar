@@ -1,4 +1,11 @@
 <div>
+    <div class="col-md-12">
+        @if (flash()->message)
+            <x-adminlte-alert theme="{{ flash()->class }}" title="{{ flash()->class }} !" dismissable>
+                {{ flash()->message }}
+            </x-adminlte-alert>
+        @endif
+    </div>
     @if ($form)
         <x-adminlte-card theme="success" title="Formulir Pengurus">
             <form action="">

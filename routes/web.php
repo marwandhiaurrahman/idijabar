@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Administrasi\DisposisiIndex;
 use App\Livewire\Administrasi\SuratMasuk;
 use App\Livewire\Organisasi\PengurusIndex;
 use App\Livewire\User\RolePermission;
@@ -27,6 +28,7 @@ Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('suratmasuk-index', SuratMasuk::class)->name('suratmasuk.index');
+Route::get('disposisi-index', DisposisiIndex::class)->name('disposisi.index');
 Route::get('suratkeluar-index', SuratMasuk::class)->name('suratkeluar.index');
 Route::get('pengurus-index', PengurusIndex::class)->name('pengurus.index');
 Route::get('struktur-index', StrukturIndex::class)->name('struktur.index');

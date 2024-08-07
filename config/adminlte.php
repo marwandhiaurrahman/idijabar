@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>IDI Jawa Barat</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'idijabar/logoidi.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -319,6 +319,11 @@ return [
         [
             'text' => 'Surat Masuk',
             'url' => 'suratmasuk-index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Disposisi',
+            'url' => 'disposisi-index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
