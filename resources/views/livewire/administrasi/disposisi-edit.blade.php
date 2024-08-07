@@ -1,4 +1,11 @@
 <div class="row">
+    <div class="col-md-12">
+        @if (flash()->message)
+            <x-adminlte-alert theme="{{ flash()->class }}" title="{{ flash()->class }} !" dismissable>
+                {{ flash()->message }}
+            </x-adminlte-alert>
+        @endif
+    </div>
     {{-- <div class="col-md-12">
         <x-adminlte-card theme="secondary" title="Surat Disposisi">
             <div class="row">
@@ -54,8 +61,17 @@
     <div class="col-md-12">
         <div class="timeline">
             <div class="time-label">
-                <span
-                    class="bg-red">{{ \Carbon\Carbon::parse($suratmasuk->tgl_input)->translatedFormat('l, d M Y') }}</span>
+                @if ($suratmasuk->tgl_selesai)
+                    <span
+                        class="bg-green">{{ \Carbon\Carbon::parse($suratmasuk->tgl_selesai)->translatedFormat('l, d M Y') }}
+                    </span>
+                    <span class="bg-green">Disposisi Selesai</span>
+                @else
+                    <span
+                        class="bg-red">{{ \Carbon\Carbon::parse($suratmasuk->tgl_input)->translatedFormat('l, d M Y') }}</span>
+                    <span class="bg-red">Disposisi Belum Selesai</span>
+                @endif
+
             </div>
             <div>
                 <i class="fas fa-envelope bg-blue"></i>
@@ -108,6 +124,13 @@
                             </tr>
                         </table>
                     </div>
+                    <div class="timeline-footer">
+                        <a href="{{ route('landingpage') }}/storage/suratmasuk/{{ $suratmasuk->filename }}"
+                            target="_blank">
+                            <x-adminlte-button class="btn-sm" label="Cetak Disposisi" theme="warning"
+                                icon="fas fa-print" />
+                        </a>
+                    </div>
                 </div>
             </div>
             <div>
@@ -118,53 +141,37 @@
                     <div class="timeline-body">
                         <iframe class="embed-responsive-item" width="100%" height="400"
                             src="{{ route('landingpage') }}/storage/suratmasuk/{{ $suratmasuk->filename }}"></iframe>
-
                     </div>
                     <div class="timeline-footer">
                         <a href="{{ route('landingpage') }}/storage/suratmasuk/{{ $suratmasuk->filename }}"
                             target="_blank">
-                            <x-adminlte-button class="btn-xs" label="Download Lampiran" theme="primary"
+                            <x-adminlte-button class="btn-sm" label="Download Lampiran" theme="primary"
                                 icon="fas fa-download" />
                         </a>
                     </div>
                 </div>
             </div>
             @foreach ($penerima as $user)
-                <div>
-                    <i class="fas fa-file-signature bg-yellow"></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fas fa-clock"></i></span>
-                        <h3 class="timeline-header">Surat Disposisi oleh <b>{{ $user->nama }}
-                                ({{ $user->pengurus->nama }})
-                            </b></h3>
-                        <div class="timeline-body">
-                            <table>
-                                <tr class="align-top">
-                                    <td class="text-nowrap">Ditujukan Kepada</td>
-                                    <td>:</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr class="align-top">
-                                    <td class="text-nowrap">Harap Dengan Hormat</td>
-                                    <td>:</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr class="align-top">
-                                    <td class="text-nowrap">Catatan Disposisi</td>
-                                    <td>:</td>
-                                    <td>-</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="timeline-footer">
-                            <x-adminlte-button class="btn-xs" wire:click='editDisposisi' label="Edit Disposisi"
-                                theme="warning" icon="fas fa-edit" />
-                            <x-adminlte-button class="btn-xs" wire:click='verifyDisposisi' label="Verifikasi"
-                                theme="success" icon="fas fa-check" />
-                        </div>
+                @livewire('administrasi.disposisi-tambah', ['suratmasuk' => $suratmasuk, 'user' => $user, 'lazy' => true])
+            @endforeach
+            <div>
+                <i class="fas fa-file-contract bg-success"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fas fa-clock"></i> {{ $suratmasuk->tgl_selesai }}</span>
+                    <h3 class="timeline-header"><b>Disposisi Selesai</b> {{ $suratmasuk->pic_selesai }}</h3>
+                    <div class="timeline-body">
+                        @if ($suratmasuk->filename_selesai)
+                            Disposisi telah diselesaikan oleh {{ $suratmasuk->pic_selesai }} pada tanggal
+                            {{ $suratmasuk->tgl_selesai }}
+                        @endif
+                    </div>
+                    <div class="timeline-footer">
+                        <x-adminlte-button class="btn-sm"
+                            wire:confirm='Apakah anda yakin bahwa disposisi ini sudah selesai ?' wire:click='selesai'
+                            label="Selesai" theme="success" icon="fas fa-check" />
                     </div>
                 </div>
-            @endforeach
+            </div>
             {{-- <div>
                 <i class="fas fa-user bg-green"></i>
                 <div class="timeline-item">
@@ -204,7 +211,7 @@
                         </div>
                     </div>
                     <div class="timeline-footer">
-                        <a href="#" class="btn btn-xs bg-maroon">See comments</a>
+                        <a href="#" class="btn btn-sm bg-maroon">See comments</a>
                     </div>
                 </div>
             </div>

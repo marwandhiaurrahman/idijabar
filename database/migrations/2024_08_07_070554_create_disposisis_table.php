@@ -15,14 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('id_surat');
             $table->string('asal_surat');
-            $table->string('perihal');
-            $table->string('disposisi');
-            $table->string('instruksi');
-            $table->string('catatan')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->text('perihal');
+            $table->text('ditujukan')->nullable();
+            $table->text('instruksi')->nullable();
+            $table->text('catatan')->nullable();
+            $table->text('keterangan')->nullable();
             $table->dateTime('tgl_input')->nullable();
-            $table->string('pic_disposisi')->nullable();
-            $table->string('user_disposisi')->nullable();
+            $table->string('jabatan');
+            $table->string('pic');
+            $table->string('user');
             $table->timestamps();
         });
     }

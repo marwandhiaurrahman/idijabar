@@ -27,6 +27,9 @@ return new class extends Migration
             $table->string('user_input');
             $table->dateTime('tgl_input');
             $table->text('user_disposisi');
+            $table->string('pic_selesai')->nullable();
+            $table->string('user_selesai')->nullable();
+            $table->dateTime('tgl_selesai')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
