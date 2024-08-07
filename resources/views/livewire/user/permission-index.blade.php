@@ -6,18 +6,22 @@
             </x-adminlte-alert>
         @endif
     </div>
-    @if ($formPermission)
-        <x-adminlte-card theme="success" title="Formulir User">
-            <form action="">
-                <input type="hidden" name="id" wire:model='id'>
-                <x-adminlte-input wire:model='name' label="Nama" name="name" />
-            </form>
-            <x-slot name="footerSlot">
-                <x-adminlte-button class="btn-sm mb-2" wire:click='simpanPermission' label="Simpan" theme="success"
-                    icon="fas fa-save" />
-            </x-slot>
-        </x-adminlte-card>
-    @endif
+    <div id="formPermission">
+        @if ($formPermission)
+            <x-adminlte-card theme="success" title="Formulir User">
+                <form action="">
+                    <input type="hidden" name="id" wire:model='id'>
+                    <x-adminlte-input wire:model='name' label="Nama" name="name" />
+                </form>
+                <x-slot name="footerSlot">
+                    <x-adminlte-button class="btn-sm" wire:click='simpanPermission' label="Simpan" theme="success"
+                        icon="fas fa-save" />
+                    <x-adminlte-button class="btn-sm" wire:click='batal' label="Batal" theme="danger"
+                        icon="fas fa-times" />
+                </x-slot>
+            </x-adminlte-card>
+        @endif
+    </div>
     <x-adminlte-card theme="secondary" title="Data Permission">
         <div class="row">
             <div class="col-md-6">

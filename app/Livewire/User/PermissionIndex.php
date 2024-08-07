@@ -12,8 +12,12 @@ class PermissionIndex extends Component
     public $permissions, $permission, $id, $name;
     public function tambahPermission()
     {
-        $this->formPermission = $this->formPermission ? 0 : 1;
+        $this->formPermission = 1;
         $this->reset(['permission', 'id', 'name']);
+    }
+    public function batal()
+    {
+        $this->formPermission = 0;
     }
     public function edit(Permission $permission)
     {

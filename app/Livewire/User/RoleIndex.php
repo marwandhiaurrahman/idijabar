@@ -13,8 +13,12 @@ class RoleIndex extends Component
     public $form = 0;
     public function tambah()
     {
-        $this->form = $this->form ? 0 : 1;
+        $this->form = 1;
         $this->reset(['role', 'id', 'name', 'permissions']);
+    }
+    public function batal()
+    {
+        $this->form = 0;
     }
     public function simpan()
     {
