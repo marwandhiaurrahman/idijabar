@@ -327,18 +327,18 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Cabang',
+            'url' => 'cabang-index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'Pengurus',
             'url' => 'pengurus-index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Struktur Organisasi',
-            'url' => 'strukturpengurus-index',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Cabang',
-            'url' => 'cabang-index',
+            'url' => 'struktur-index',
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'PENGATURAN'],

@@ -2,6 +2,7 @@
 
 use App\Livewire\Administrasi\SuratMasuk;
 use App\Livewire\User\RolePermission;
+use App\Livewire\Organisasi\StrukturIndex;
 use App\Livewire\User\UserIndex;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Auth::routes();
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('suratmasuk-index', SuratMasuk::class)->name('suratmasuk.index');
 Route::get('suratkeluar-index', SuratMasuk::class)->name('suratkeluar.index');
+Route::get('struktur-index', StrukturIndex::class)->name('struktur.index');
 Route::get('user-index', UserIndex::class)->name('user.index');
 Route::get('role-permission', RolePermission::class)->name('rolepermission.index');
 Route::get('profil', SuratMasuk::class)->name('profil');

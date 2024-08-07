@@ -10,7 +10,7 @@
         <x-adminlte-card theme="success" title="Formulir User">
             <form action="">
                 <input type="hidden" name="id" wire:model='id'>
-                <x-adminlte-input wire:model='name' label="Nama" name="name" type="email" />
+                <x-adminlte-input wire:model='name' label="Nama" name="name" />
                 <div class="form-group">
                     <div class="row">
                         @foreach ($permissions as $id => $name)
