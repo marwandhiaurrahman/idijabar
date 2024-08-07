@@ -327,12 +327,7 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Cabang',
-            'url' => 'cabang-index',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Pengurus',
+            'text' => 'Pengurus Organisasi',
             'url' => 'pengurus-index',
             'icon' => 'fas fa-fw fa-user',
         ],

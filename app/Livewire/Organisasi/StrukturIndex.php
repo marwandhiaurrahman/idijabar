@@ -9,7 +9,6 @@ class StrukturIndex extends Component
 {
     public $strukturs, $struktur, $id, $nama, $struktur_id;
     public $form = 0;
-
     public function tambah()
     {
         $this->form = $this->form ? 0 : 1;
