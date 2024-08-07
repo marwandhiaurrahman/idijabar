@@ -324,6 +324,7 @@ return [
         [
             'text' => 'Disposisi',
             'url' => 'disposisi-index',
+            'active' => ['disposisi-index', 'disposisi-edit'],
             'icon' => 'fas fa-envelope-open-text',
         ],
         [

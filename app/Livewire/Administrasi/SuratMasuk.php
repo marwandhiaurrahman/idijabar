@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Administrasi;
 
+use App\Models\Pengurus;
 use App\Models\SuratMasuk as ModelsSuratMasuk;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,7 +12,8 @@ class SuratMasuk extends Component
 {
     use WithPagination;
     use WithFileUploads;
-    public $suratmasuks;
+    public $suratmasuks, $penguruss;
+    public $file, $filename;
     public $suratmasuk, $id, $no_surat, $kode_surat, $tgl_surat, $asal_surat, $perihal, $keterangan, $sifat, $jenis, $pic_input, $user_input, $tgl_input, $user_disposisi = [''];
     public $form = 0;
     public function tambahPenerima()
@@ -26,7 +28,7 @@ class SuratMasuk extends Component
     public function tambah()
     {
         $this->form = $this->form ? 0 : 1;
-        $this->reset(['suratmasuk', 'id', 'no_surat', 'kode_surat', 'tgl_surat', 'asal_surat', 'perihal', 'keterangan', 'sifat', 'jenis', 'pic_input', 'user_input', 'tgl_input',]);
+        $this->reset(['suratmasuk', 'id', 'file','filename','no_surat', 'kode_surat', 'tgl_surat', 'asal_surat', 'perihal', 'keterangan', 'sifat', 'jenis', 'pic_input', 'user_input', 'tgl_input',]);
         $this->user_disposisi = [''];
     }
     public function simpan()
@@ -36,13 +38,11 @@ class SuratMasuk extends Component
             'perihal' => 'required',
         ]);
         try {
-            // if ($this->file) {
-            //     $filename = $this->norm . '_' . $this->nama . '_LAB_' . $this->tanggal . now()->format('dmY_His') . '.' . $this->file->getClientOriginalExtension();
-            //     $path =  $this->file->storeAs('public/laboratorium',  $filename);
-            //     $fileurl = route('landingpage') .  '/storage/laboratorium/' . $filename;
-            //     $this->fileurl = route('landingpage') .  '/storage/laboratorium/' . $filename;
-            //     $this->filename =  $filename;
-            // }
+            if ($this->file) {
+                $filename = "SURATMASUK_" . now()->format('dmY_His') . '.' . $this->file->getClientOriginalExtension();
+                $path =  $this->file->storeAs('public/suratmasuk',  $filename);
+                $this->filename =  $filename;
+            }
             $suratmasuk = ModelsSuratMasuk::updateOrCreate(
                 ['id' => $this->id],
                 [
@@ -52,6 +52,7 @@ class SuratMasuk extends Component
                     'asal_surat' => $this->asal_surat,
                     'perihal' => $this->perihal,
                     'keterangan' => $this->keterangan,
+                    'filename' => $this->filename,
                     'sifat' => $this->sifat,
                     'jenis' => $this->jenis,
                     'pic_input' => auth()->user()->name,
@@ -77,19 +78,22 @@ class SuratMasuk extends Component
         $this->keterangan = $suratmasuk->keterangan;
         $this->sifat = $suratmasuk->sifat;
         $this->jenis = $suratmasuk->jenis;
+        $this->filename = $suratmasuk->filename;
         $this->pic_input = $suratmasuk->pic_input;
         $this->user_input = $suratmasuk->user_input;
         $this->tgl_input = $suratmasuk->tgl_input;
         $this->user_disposisi = explode(';', $suratmasuk->user_disposisi);
         $this->form = 1;
     }
-    public function hapus(ModelsSuratMasuk $suratmasuk){
+    public function hapus(ModelsSuratMasuk $suratmasuk)
+    {
         $suratmasuk->delete();
         flash('Surat masuk berhasil dihapus', 'success');
     }
     public function render()
     {
         $this->suratmasuks = ModelsSuratMasuk::get();
+        $this->penguruss = Pengurus::get();
         return view('livewire.administrasi.surat-masuk')->title('Surat Masuk');
     }
 }

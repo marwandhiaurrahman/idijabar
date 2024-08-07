@@ -38,6 +38,9 @@
                                         <input id="file" type="file" name="file" class="form-control"
                                             wire:model="file">
                                     </div>
+                                    <div class="col-12">
+                                        {{ $filename }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -62,8 +65,8 @@
                                 <x-adminlte-button class="btn-sm" wire:click='tambahPenerima'
                                     label="Tambah Penerima Disposisi" theme="success" icon="fas fa-plus" />
                                 <datalist id="diagnosalist">
-                                    @foreach ($user_disposisi as $item)
-                                        <option value="{{ $item }}"></option>
+                                    @foreach ($penguruss as $item)
+                                        <option value="{{ $item->jabatan?->nama }}">{{ $item->nama }}</option>
                                     @endforeach
                                 </datalist>
                             </div>
@@ -99,7 +102,7 @@
                                 </div>
                                 <span class="product-description">
                                     <b>{{ $item->perihal }}</b><br>
-                                   {{ $item->keterangan }}
+                                    {{ $item->keterangan }}
                                 </span>
                             </div>
                         </a>
