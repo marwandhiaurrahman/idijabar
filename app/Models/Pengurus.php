@@ -13,5 +13,9 @@ class Pengurus extends Model
     {
         return $this->hasOne(Struktur::class,'id','struktur_id');
     }
+    public function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
 
 }

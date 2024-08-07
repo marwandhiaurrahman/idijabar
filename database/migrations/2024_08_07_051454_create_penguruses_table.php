@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('penguruses', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('struktur_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }

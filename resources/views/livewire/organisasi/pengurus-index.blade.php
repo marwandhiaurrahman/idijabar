@@ -38,6 +38,8 @@
                     <th>Id</th>
                     <th>Nama Pengurus</th>
                     <th>Jabatan/Struktur</th>
+                    <th>Phone</th>
+                    <th>Email</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -47,6 +49,8 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->jabatan?->nama }}</td>
+                        <td>{{ $item->user?->phone }}</td>
+                        <td>{{ $item->user?->email }}</td>
                         <td>
                             <x-adminlte-button class="btn-xs" wire:click="edit('{{ $item->id }}')" label="Edit"
                                 theme="warning" icon="fas fa-edit" />

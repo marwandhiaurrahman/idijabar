@@ -36,7 +36,8 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Stuktur Jabatan</th>
+                    <th>Stuktur/Jabatan</th>
+                    <th>Pengurus</th>
                     <th>Dibawah Koordinasi</th>
                     <th>Action</th>
                 </tr>
@@ -46,6 +47,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nama }}</td>
+                        <td>{{ $item->pengurus?->nama }}</td>
                         <td>{{ $item->atasan?->nama }}</td>
                         <td>
                             <x-adminlte-button class="btn-xs" wire:click="edit('{{ $item->id }}')" label="Edit"

@@ -13,4 +13,9 @@ class Struktur extends Model
     {
         return $this->hasOne(Struktur::class,'id','struktur_id');
     }
+    public function pengurus()
+    {
+        return $this->hasOne(Pengurus::class);
+    }
+
 }

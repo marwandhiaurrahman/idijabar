@@ -36,6 +36,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nama</th>
+                        <th>Roles</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>No HP</th>
@@ -48,6 +49,11 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
+                            <td>
+                                @foreach ($item->getRoleNames() as $role)
+                                    {{ $role }}
+                                @endforeach
+                            </td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>
