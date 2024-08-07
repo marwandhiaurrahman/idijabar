@@ -25,6 +25,18 @@ class RoleSeeder extends Seeder
             $role = Role::create(['name' => $item]);
             $role->syncPermissions($permission);
         }
+        $permissionsx = [
+            'surat-masuk',
+            'disposisi',
+            'surat-keluar',
+            'pengurus',
+            'struktur-organisasi',
+            'role-permission',
+            'user',
+        ];
+        foreach ($permissionsx as $item) {
+            Permission::create(['name' => Str::slug($item)]);
+        }
         $role = Role::create(['name' => 'Admin Super']);
         $permissions = Permission::pluck('id', 'id')->all();
         $role->syncPermissions($permissions);

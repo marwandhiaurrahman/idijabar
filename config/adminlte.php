@@ -319,43 +319,43 @@ return [
         [
             'text' => 'Surat Masuk',
             'url' => 'suratmasuk-index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-envelope',
         ],
         [
             'text' => 'Disposisi',
             'url' => 'disposisi-index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-envelope-open-text',
         ],
         [
             'text' => 'Surat Keluar',
             'url' => 'suratkeluar-index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-paper-plane',
         ],
         [
             'text' => 'Pengurus Organisasi',
             'url' => 'pengurus-index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user-tie',
         ],
         [
             'text' => 'Struktur Organisasi',
             'url' => 'struktur-index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-project-diagram',
         ],
         ['header' => 'PENGATURAN'],
         [
             'text' => 'User',
             'url' => 'user-index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-users',
         ],
         [
             'text' => 'Role & Permission',
             'url' => 'role-permission',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-id-card',
         ],
         [
-            'text' => 'profile',
-            'url' => 'profile',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Profil',
+            'url' => 'profil',
+            'icon' => 'fas fa-user',
         ],
     ],
 

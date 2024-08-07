@@ -8,6 +8,6 @@ class DisposisiIndex extends Component
 {
     public function render()
     {
-        return view('livewire.administrasi.disposisi-index');
+        return view('livewire.administrasi.disposisi-index')->title('Surat Disposisi');
     }
 }
