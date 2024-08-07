@@ -9,4 +9,8 @@ class Struktur extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    public function atasan()
+    {
+        return $this->hasOne(Struktur::class,'id','struktur_id');
+    }
 }

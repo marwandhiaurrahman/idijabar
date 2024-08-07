@@ -39,7 +39,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nama }}</td>
-                        <td>{{ $item->struktur_id }}</td>
+                        <td>{{ $item->atasan?->nama }}</td>
                         <td>
                             <x-adminlte-button class="btn-xs" wire:click="edit('{{ $item->id }}')" label="Edit"
                                 theme="warning" icon="fas fa-edit" />
