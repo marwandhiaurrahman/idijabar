@@ -52,7 +52,7 @@ class DisposisiEdit extends Component
         $fileurl = QrCode::format('png')->size(100)->generate(route('landingpage') . "/storage/suratmasuk/" . $suratmasuk->filename);
         $fileurl = "data:image/png;base64," . base64_encode($fileurl);
         foreach ($disposisis as $disposisi) {
-            $verify = QrCode::format('png')->size(100)->generate($disposisi->tgl_verify);
+            $verify = QrCode::format('png')->size(100)->generate($disposisi->tgl_verify ?? "Belum Verifikasi");
             $verify = "data:image/png;base64," . base64_encode($verify);
             $disposisi->qrverify = $verify;
         }

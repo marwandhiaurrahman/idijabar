@@ -97,7 +97,15 @@
                         <tr>
                             <td>Disposisi</td>
                             <td>:</td>
-                            <td>{{ $disposisi->instruksi ?? '-' }}</td>
+                            <td>
+                                @if ($disposisi)
+                                    @foreach (explode(';', $disposisi?->instruksi) as $perintah)
+                                        {{ $perintah }} <br>
+                                    @endforeach
+                                @else
+                                    -
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>Catatan</td>
