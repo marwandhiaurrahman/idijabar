@@ -128,6 +128,32 @@
                 </td> --}}
             </tr>
         @endforeach
+        <tr>
+            <td colspan="2">
+                <table class="table-borderless">
+                    <tr>
+                        <td>Penerima Disposisi</td>
+                        <td>:</td>
+                        <td>{{ $suratmasuk->pic_selesai }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Selesai Disposisi</td>
+                        <td>:</td>
+                        <td>{{ $suratmasuk->tgl_selesai }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Cetak Disposisi</td>
+                        <td>:</td>
+                        <td>{{ now() }}</td>
+                    </tr>
+
+                </table>
+            </td>
+            <td>
+                <i>Disposisi ini telah diisi dan diverifikasi secara elektronik oleh Sistem IDI Jabar</i>
+
+            </td>
+        </tr>
     </table>
     <style>
         @page {

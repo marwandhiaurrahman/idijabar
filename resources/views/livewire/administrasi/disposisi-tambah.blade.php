@@ -33,6 +33,18 @@
                             <option value="{{ $item->nama }}">{{ $item->pengurus?->nama }}</option>
                         @endforeach
                     </datalist>
+                    <br><br>
+                    <label>Disposisi :</label>
+                    <div class="form-group">
+                        @foreach ($ins as $value => $label)
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" id="{{ $value }}"
+                                    wire:model="instruksi" value="{{ $value }}">
+                                <label for="{{ $value }}"
+                                    class="custom-control-label">{{ $label }}</label>
+                            </div>
+                        @endforeach
+                    </div>
                     <x-adminlte-textarea wire:model="catatan" label="Catatan Disposisi" name="catatan"
                         igroup-size="sm" />
                 </form>
@@ -54,7 +66,15 @@
                     <tr class="align-top">
                         <td class="text-nowrap">Harap Dengan Hormat</td>
                         <td>:</td>
-                        <td>-</td>
+                        <td>
+                            @if ($disposisi)
+                                @foreach (explode(';', $disposisi?->instruksi) as $perintah)
+                                    {{ $perintah }} <br>
+                                @endforeach
+                            @else
+                                -
+                            @endif
+                        </td>
                     </tr>
                     <tr class="align-top">
                         <td class="text-nowrap">Catatan Disposisi</td>

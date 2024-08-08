@@ -12,8 +12,21 @@ use RealRashid\SweetAlert\Facades\Alert;
 class DisposisiTambah extends Component
 {
     public $suratmasuk, $user, $strukturs, $user_disposisi = [''];
-    public $disposisi, $instruksi, $catatan, $keterangan,  $ditujukan;
+    public $disposisi, $instruksi = [], $catatan, $keterangan,  $ditujukan;
     public $form;
+
+    public $ins =  [
+        'Untuk ditindaklanjuti' => 'Untuk ditindaklanjuti',
+        'Proses sesuai kemampuan / peraturan yang berlaku' => 'Proses sesuai kemampuan / peraturan yang berlaku',
+        'Koordinasikan / konfirmasi dengan ybs / instansi terkait' => 'Koordinasikan / konfirmasi dengan ybs / instansi terkait',
+        'Untuk dibantu / difasilitasi / dipenuhi sesuai kebutuhan' => 'Untuk dibantu / difasilitasi / dipenuhi sesuai kebutuhan',
+        'Pelajari / telaah / sarannya' => 'Pelajari / telaah / sarannya',
+        'Wakili / hadiri / terima / laporkan hasilnya' => 'Wakili / hadiri / terima / laporkan hasilnya',
+        'Agendakan / persiapkan / koordinasikan' => 'Agendakan / persiapkan / koordinasikan',
+        'Jadwalkan ingatkan waktunya' => 'Jadwalkan ingatkan waktunya',
+        'Siapkan pointer / sambutan / bahan' => 'Siapkan pointer / sambutan / bahan',
+        'Simpan / arsipkan' => 'Simpan / arsipkan',
+    ];
     public function tambahPenerima()
     {
         $this->user_disposisi[] = '';
@@ -28,6 +41,7 @@ class DisposisiTambah extends Component
         $this->form = 1;
         $this->catatan = $this->disposisi?->catatan;
         $this->user_disposisi = explode(';', $this->suratmasuk?->user_disposisi);
+        $this->instruksi = explode(';', $this->disposisi?->instruksi);
     }
     public function batal()
     {
@@ -46,7 +60,7 @@ class DisposisiTambah extends Component
                     'asal_surat' => $this->suratmasuk->asal_surat,
                     'perihal' => $this->suratmasuk->perihal,
                     'ditujukan' => implode(';', $this->user_disposisi),
-                    'instruksi' => $this->instruksi,
+                    'instruksi' => implode(';', $this->instruksi),
                     'catatan' => $this->catatan,
                     'keterangan' => $this->keterangan,
                     'tgl_input' => now(),
