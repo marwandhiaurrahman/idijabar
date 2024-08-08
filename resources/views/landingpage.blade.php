@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - FlexStart Bootstrap Template</title>
+    <title>IDI Jawa Barat</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('flex/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('flex/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('idijabar/logoidi.png') }}" rel="icon">
+    <link href="{{ asset('idijabar/logoidi.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -29,13 +29,6 @@
     <!-- Main CSS File -->
     <link href="{{ asset('flex/assets/css/main.css') }}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -44,7 +37,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
             <a href="index.html" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="{{ asset('flex/assets/img/logo.png') }}" alt="">
+                <img src="{{ asset('idijabar/logoidi.png') }}" alt="">
                 <h1 class="sitename">IDI Jawa Barat</h1>
             </a>
             <nav id="navmenu" class="navmenu">
@@ -108,17 +101,13 @@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
-
             <a class="btn-getstarted flex-md-shrink-0" href="{{ route('login') }}">Login</a>
-
         </div>
     </header>
 
     <main class="main">
-
         <!-- Hero Section -->
         <section id="hero" class="hero section">
-
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
@@ -127,23 +116,23 @@
                         <p data-aos="fade-up" data-aos-delay="100">We are team of talented designers making websites
                             with Bootstrap</p>
                         <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-                            <a href="#about" class="btn-get-started">Login Pengurus <i class="bi bi-arrow-right"></i></a>
+                            <a href="{{ route('login') }}" class="btn-get-started">Login Pengurus <i
+                                    class="bi bi-arrow-right"></i></a>
                             {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                                 class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i
                                     class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
                         </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                        <img src="{{ asset('flex/assets/img/hero-img.png') }}" class="img-fluid animated" alt="">
+                        <img src="{{ asset('flex/assets/img/hero-img.png') }}" class="img-fluid animated"
+                            alt="">
                     </div>
                 </div>
             </div>
 
         </section><!-- /Hero Section -->
-
         <!-- About Section -->
         <section id="about" class="about section">
-
             <div class="container" data-aos="fade-up">
                 <div class="row gx-0">
 
@@ -751,9 +740,9 @@
                                 <div class="portfolio-info">
                                     <h4>Product 1</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('flex/assets/img/portfolio/product-1.jpg') }}" title="Product 1"
-                                        data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
+                                    <a href="{{ asset('flex/assets/img/portfolio/product-1.jpg') }}"
+                                        title="Product 1" data-gallery="portfolio-gallery-product"
+                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                     <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
@@ -767,9 +756,9 @@
                                 <div class="portfolio-info">
                                     <h4>Branding 1</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('flex/assets/img/portfolio/branding-1.jpg') }}" title="Branding 1"
-                                        data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
+                                    <a href="{{ asset('flex/assets/img/portfolio/branding-1.jpg') }}"
+                                        title="Branding 1" data-gallery="portfolio-gallery-branding"
+                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                     <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
@@ -815,9 +804,9 @@
                                 <div class="portfolio-info">
                                     <h4>Product 2</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('flex/assets/img/portfolio/product-2.jpg') }}" title="Product 2"
-                                        data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
+                                    <a href="{{ asset('flex/assets/img/portfolio/product-2.jpg') }}"
+                                        title="Product 2" data-gallery="portfolio-gallery-product"
+                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                     <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
@@ -831,9 +820,9 @@
                                 <div class="portfolio-info">
                                     <h4>Branding 2</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('flex/assets/img/portfolio/branding-2.jpg') }}" title="Branding 2"
-                                        data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
+                                    <a href="{{ asset('flex/assets/img/portfolio/branding-2.jpg') }}"
+                                        title="Branding 2" data-gallery="portfolio-gallery-branding"
+                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                     <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
@@ -879,9 +868,9 @@
                                 <div class="portfolio-info">
                                     <h4>Product 3</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('flex/assets/img/portfolio/product-3.jpg') }}" title="Product 3"
-                                        data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
+                                    <a href="{{ asset('flex/assets/img/portfolio/product-3.jpg') }}"
+                                        title="Product 3" data-gallery="portfolio-gallery-product"
+                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                     <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
@@ -895,9 +884,9 @@
                                 <div class="portfolio-info">
                                     <h4>Branding 3</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('flex/assets/img/portfolio/branding-3.jpg') }}" title="Branding 2"
-                                        data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
+                                    <a href="{{ asset('flex/assets/img/portfolio/branding-3.jpg') }}"
+                                        title="Branding 2" data-gallery="portfolio-gallery-branding"
+                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                     <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                 </div>

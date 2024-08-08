@@ -14,7 +14,6 @@ class DisposisiTambah extends Component
     public $suratmasuk, $user, $strukturs, $user_disposisi = [''];
     public $disposisi, $instruksi = [], $catatan, $keterangan,  $ditujukan;
     public $form;
-
     public $ins =  [
         'Untuk ditindaklanjuti' => 'Untuk ditindaklanjuti',
         'Proses sesuai kemampuan / peraturan yang berlaku' => 'Proses sesuai kemampuan / peraturan yang berlaku',
@@ -38,10 +37,16 @@ class DisposisiTambah extends Component
     }
     public function edit()
     {
-        $this->form = 1;
-        $this->catatan = $this->disposisi?->catatan;
-        $this->user_disposisi = explode(';', $this->suratmasuk?->user_disposisi);
-        $this->instruksi = explode(';', $this->disposisi?->instruksi);
+        $user = auth()->user();
+        $pengurus = $user->pengurus;
+        if ($pengurus?->struktur_id == $this->user->id) {
+            $this->form = 1;
+            $this->catatan = $this->disposisi?->catatan;
+            $this->user_disposisi = explode(';', $this->suratmasuk?->user_disposisi);
+            $this->instruksi = explode(';', $this->disposisi?->instruksi);
+        } else {
+            flash('Anda tidak memiliki akses untuk disposisi ini', 'danger');
+        }
     }
     public function batal()
     {
@@ -82,14 +87,23 @@ class DisposisiTambah extends Component
     }
     public function verify()
     {
-        $disposisi = Disposisi::find($this->disposisi->id);
-        $verify = $disposisi->tgl_verify ? null : now();
-        $disposisi->update([
-            'tgl_verify' => $verify,
-        ]);
-        Alert::success('Berhasil', 'Disposisi telah diverifikasi');
-        $url = route('disposisi.edit') . '?kode=' . $this->suratmasuk->id;
-        return redirect()->to($url);
+        $user = auth()->user();
+        $struktur = Struktur::where('nama', $this->disposisi->jabatan)->first();
+        $jabatan = $user->pengurus?->struktur_id;
+        if ($jabatan ==  $struktur->id) {
+            $disposisi = Disposisi::find($this->disposisi->id);
+            $verify = $disposisi->tgl_verify ? null : now();
+            $disposisi->update([
+                'tgl_verify' => $verify,
+            ]);
+            Alert::success('Berhasil', 'Disposisi telah diverifikasi');
+            $url = route('disposisi.edit') . '?kode=' . $this->suratmasuk->id;
+            return redirect()->to($url);
+        } else {
+            Alert::error('Mohon Maaf', 'Anda tidak memiliki akses untuk disposisi ini');
+            $url = route('disposisi.edit') . '?kode=' . $this->suratmasuk->id;
+            return redirect()->to($url);
+        }
     }
     public function mount($suratmasuk, $user)
     {
