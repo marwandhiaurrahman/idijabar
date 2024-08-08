@@ -27,14 +27,17 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
-Route::get('home', [HomeController::class, 'index'])->name('home');
-Route::get('suratmasuk-index', SuratMasukIndex::class)->name('suratmasuk.index');
-Route::get('disposisi-index', DisposisiIndex::class)->name('disposisi.index');
 Route::get('disposisi-print', [DisposisiEdit::class, 'print'])->name('disposisi.print');
-Route::get('disposisi-edit', DisposisiEdit::class)->name('disposisi.edit');
-Route::get('suratkeluar-index', SuratMasuk::class)->name('suratkeluar.index');
-Route::get('pengurus-index', PengurusIndex::class)->name('pengurus.index');
-Route::get('struktur-index', StrukturIndex::class)->name('struktur.index');
-Route::get('user-index', UserIndex::class)->name('user.index');
-Route::get('role-permission', RolePermission::class)->name('rolepermission.index');
-Route::get('profil', ProfilIndex::class)->name('profil');
+
+Route::middleware('auth')->group(function () {
+    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('suratmasuk-index', SuratMasukIndex::class)->name('suratmasuk.index');
+    Route::get('disposisi-index', DisposisiIndex::class)->name('disposisi.index');
+    Route::get('disposisi-edit', DisposisiEdit::class)->name('disposisi.edit');
+    Route::get('suratkeluar-index', SuratMasuk::class)->name('suratkeluar.index');
+    Route::get('pengurus-index', PengurusIndex::class)->name('pengurus.index');
+    Route::get('struktur-index', StrukturIndex::class)->name('struktur.index');
+    Route::get('user-index', UserIndex::class)->name('user.index');
+    Route::get('role-permission', RolePermission::class)->name('rolepermission.index');
+    Route::get('profil', ProfilIndex::class)->name('profil');
+});
