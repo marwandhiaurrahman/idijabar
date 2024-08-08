@@ -11,4 +11,8 @@ class SuratMasuk extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = ['id'];
+    public function disposisis()
+    {
+        return $this->hasMany(Disposisi::class,  'id_surat', 'id');
+    }
 }

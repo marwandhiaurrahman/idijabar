@@ -35,29 +35,45 @@ class DisposisiTambah extends Component
     }
     public function simpan()
     {
-        $disposisi = Disposisi::updateOrCreate(
-            [
-                'id_surat' => $this->suratmasuk->id,
-                'jabatan' => $this->user->nama,
-                'user' => $this->user->pengurus?->user_id,
-            ],
-            [
-                'asal_surat' => $this->suratmasuk->asal_surat,
-                'perihal' => $this->suratmasuk->perihal,
-                'ditujukan' => implode(';', $this->user_disposisi),
-                'instruksi' => $this->instruksi,
-                'catatan' => $this->catatan,
-                'keterangan' => $this->keterangan,
-                'tgl_input' => now(),
-                'pic' => $this->user->pengurus?->nama,
-            ]
-        );
-        $suratmasuk = SuratMasuk::find($this->suratmasuk->id);
-        $suratmasuk->update([
-            'user_disposisi' => implode(';', $this->user_disposisi),
+        try {
+            $disposisi = Disposisi::updateOrCreate(
+                [
+                    'id_surat' => $this->suratmasuk->id,
+                    'jabatan' => $this->user->nama,
+                    'user' => $this->user->pengurus?->user_id,
+                ],
+                [
+                    'asal_surat' => $this->suratmasuk->asal_surat,
+                    'perihal' => $this->suratmasuk->perihal,
+                    'ditujukan' => implode(';', $this->user_disposisi),
+                    'instruksi' => $this->instruksi,
+                    'catatan' => $this->catatan,
+                    'keterangan' => $this->keterangan,
+                    'tgl_input' => now(),
+                    'pic' => $this->user->pengurus?->nama,
+                ]
+            );
+            $suratmasuk = SuratMasuk::find($this->suratmasuk->id);
+            $suratmasuk->update([
+                'user_disposisi' => implode(';', $this->user_disposisi),
+            ]);
+            $this->form = 0;
+            Alert::success('Berhasil', 'Disposisi telah disimpan');
+            $url = route('disposisi.edit') . '?kode=' . $this->suratmasuk->id;
+            return redirect()->to($url);
+        } catch (\Throwable $th) {
+            //throw $th;
+            flash($th->getMessage(), 'danger');
+        }
+    }
+    public function verify()
+    {
+        $disposisi = Disposisi::find($this->disposisi->id);
+        $verify = $disposisi->tgl_verify ? null : now();
+        $disposisi->update([
+            'tgl_verify' => $verify,
         ]);
-        $this->form = 0;
-        Alert::success('Berhasil', 'Disposisi telah disimpan');
+        Alert::success('Berhasil', 'Disposisi telah diverifikasi');
         $url = route('disposisi.edit') . '?kode=' . $this->suratmasuk->id;
         return redirect()->to($url);
     }

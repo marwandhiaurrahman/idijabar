@@ -6,6 +6,11 @@
                 ({{ $user->pengurus?->nama }})
             </b></h3>
         <div class="timeline-body">
+            @if (flash()->message)
+                <x-adminlte-alert theme="{{ flash()->class }}" title="{{ flash()->class }} !" dismissable>
+                    {{ flash()->message }}
+                </x-adminlte-alert>
+            @endif
             @if ($form)
                 <form>
                     <label>Disposisi Ditujukan Kepada</label>
@@ -63,12 +68,20 @@
             @if ($form)
                 <x-adminlte-button class="btn-sm" wire:click='simpan' label="Simpan" theme="success"
                     icon="fas fa-save" />
-                <x-adminlte-button class="btn-sm" wire:click='batal' label="Batal" theme="danger" icon="fas fa-times" />
+                <x-adminlte-button class="btn-sm" wire:click='batal' label="Batal" theme="danger"
+                    icon="fas fa-times" />
             @else
-                <x-adminlte-button class="btn-sm" wire:click='edit' label="Edit Disposisi" theme="warning"
-                    icon="fas fa-edit" />
-                <x-adminlte-button class="btn-sm" wire:click='verify' label="Verifikasi" theme="success"
-                    icon="fas fa-check" />
+                @if ($disposisi)
+                    @if (!$disposisi?->tgl_verify)
+                        <x-adminlte-button class="btn-sm" wire:click='edit' label="Edit Disposisi" theme="warning"
+                            icon="fas fa-edit" />
+                    @endif
+                    <x-adminlte-button class="btn-sm" wire:click='verify' label="Verifikasi" theme="success"
+                        icon="fas fa-check" />
+                @else
+                    <x-adminlte-button class="btn-sm" wire:click='edit' label="Edit Disposisi" theme="warning"
+                        icon="fas fa-edit" />
+                @endif
             @endif
         </div>
     </div>

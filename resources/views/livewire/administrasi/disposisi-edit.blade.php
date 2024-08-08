@@ -125,8 +125,7 @@
                         </table>
                     </div>
                     <div class="timeline-footer">
-                        <a href="{{ route('landingpage') }}/storage/suratmasuk/{{ $suratmasuk->filename }}"
-                            target="_blank">
+                        <a href="{{ route('disposisi.print') }}?kode={{ $suratmasuk->id }}" target="_blank">
                             <x-adminlte-button class="btn-sm" label="Cetak Disposisi" theme="warning"
                                 icon="fas fa-print" />
                         </a>
@@ -160,15 +159,22 @@
                     <span class="time"><i class="fas fa-clock"></i> {{ $suratmasuk->tgl_selesai }}</span>
                     <h3 class="timeline-header"><b>Disposisi Selesai</b> {{ $suratmasuk->pic_selesai }}</h3>
                     <div class="timeline-body">
-                        @if ($suratmasuk->filename_selesai)
+                        @if ($suratmasuk->tgl_selesai)
                             Disposisi telah diselesaikan oleh {{ $suratmasuk->pic_selesai }} pada tanggal
                             {{ $suratmasuk->tgl_selesai }}
                         @endif
                     </div>
                     <div class="timeline-footer">
-                        <x-adminlte-button class="btn-sm"
-                            wire:confirm='Apakah anda yakin bahwa disposisi ini sudah selesai ?' wire:click='selesai'
-                            label="Selesai" theme="success" icon="fas fa-check" />
+                        @if ($suratmasuk->tgl_selesai)
+                            <x-adminlte-button class="btn-sm"
+                                wire:confirm='Apakah anda yakin akan membatalkan bahwa disposisi ini sudah selesai ?'
+                                wire:click='batalselesai' label="Batal Selesai" theme="danger" icon="fas fa-times" />
+                        @else
+                            <x-adminlte-button class="btn-sm"
+                                wire:confirm='Apakah anda yakin bahwa disposisi ini sudah selesai ?'
+                                wire:click='selesai' label="Selesai" theme="success" icon="fas fa-check" />
+                        @endif
+
                     </div>
                 </div>
             </div>

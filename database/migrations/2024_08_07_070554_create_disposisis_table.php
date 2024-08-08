@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('jabatan');
             $table->string('pic');
             $table->string('user');
+            $table->dateTime('tgl_verify')->nullable();
             $table->timestamps();
         });
     }
