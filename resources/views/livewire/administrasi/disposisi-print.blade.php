@@ -50,7 +50,7 @@
                     <tr>
                         <td>Perihal Surat</td>
                         <td>:</td>
-                        <td>{{ $suratmasuk->perihal_surat }}</td>
+                        <td>{{ $suratmasuk->perihal }}</td>
                     </tr>
                     <tr>
                         <td>Keterangan</td>
