@@ -33,6 +33,8 @@ Route::get('disposisi-print', [DisposisiEdit::class, 'print'])->name('disposisi.
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('landingpage');
     Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('profil', ProfilIndex::class)->name('profil');
+
     Route::get('suratmasuk-index', SuratMasukIndex::class)->name('suratmasuk.index');
     Route::get('disposisi-index', DisposisiIndex::class)->name('disposisi.index');
     Route::get('disposisi-edit', DisposisiEdit::class)->name('disposisi.edit');
@@ -41,5 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::get('struktur-index', StrukturIndex::class)->name('struktur.index');
     Route::get('user-index', UserIndex::class)->name('user.index');
     Route::get('role-permission', RolePermission::class)->name('rolepermission.index');
-    Route::get('profil', ProfilIndex::class)->name('profil');
 });

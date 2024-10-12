@@ -317,7 +317,8 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url' => '',
+            'url' => '/',
+            'active' => ['', 'home'],
             'icon' => 'fas fa-home',
         ],
         ['header' => 'PENGELOLAAN'],

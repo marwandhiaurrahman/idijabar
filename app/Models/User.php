@@ -34,4 +34,16 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pengurus::class);
     }
+    public function adminlte_image()
+    {
+        if ($this->avatar) {
+            return $this->avatar;
+        } else {
+            return asset('idijabar/logoidi.png');
+        }
+    }
+    public function adminlte_profile_url()
+    {
+        return route('profil');
+    }
 }
