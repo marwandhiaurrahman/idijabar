@@ -26,10 +26,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
+Route::get('/refresh-captcha', function () {
+    return response()->json(['captcha' => captcha_img()]);
+});
 Route::get('disposisi-print', [DisposisiEdit::class, 'print'])->name('disposisi.print');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('landingpage');
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('suratmasuk-index', SuratMasukIndex::class)->name('suratmasuk.index');
     Route::get('disposisi-index', DisposisiIndex::class)->name('disposisi.index');
