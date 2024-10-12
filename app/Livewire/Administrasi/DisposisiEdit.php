@@ -75,7 +75,7 @@ class DisposisiEdit extends Component
         $this->suratmasuk = SuratMasuk::find($this->kode);
         $user =  explode(';', $this->suratmasuk->user_disposisi);
         $this->penerima = Struktur::whereIn('nama', $user)->get();
-        return redirect()->back();
+        // return redirect()->back();
     }
     public function render()
     {
