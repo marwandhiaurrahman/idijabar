@@ -369,6 +369,17 @@ return [
             'active'  => ['user', 'user/create', 'user/edit/*'],
         ],
         [
+            'text' => 'Whatssapp',
+            'url' => 'whatsapp',
+            'icon' => 'fab fa-whatsapp',
+            'can' => 'admin',
+        ],
+        [
+            'text' => 'Log Aktifitas',
+            'url' => 'log-aktifitas',
+            'icon' => 'fas fa-history',
+        ],
+        [
             'text' => 'Profil',
             'url' => 'profil',
             'icon' => 'fas fa-user',

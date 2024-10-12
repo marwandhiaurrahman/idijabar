@@ -11,6 +11,7 @@ use App\Livewire\User\RolePermission;
 use App\Livewire\Organisasi\StrukturIndex;
 use App\Livewire\User\ProfilIndex;
 use App\Livewire\User\UserIndex;
+use App\Livewire\Wa\WhatsappIndex;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('profil', ProfilIndex::class)->name('profil');
     Route::get('role-permission', RolePermission::class)->name('role-permission');
     Route::get('user', UserIndex::class)->name('user.index');
-
+    Route::get('whatsapp', WhatsappIndex::class)->name('whatsapp.index');
 
     Route::get('suratmasuk-index', SuratMasukIndex::class)->name('suratmasuk.index');
     Route::get('disposisi-index', DisposisiIndex::class)->name('disposisi.index');
