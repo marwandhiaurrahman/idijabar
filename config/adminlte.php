@@ -311,6 +311,11 @@ return [
             'text' => 'search',
         ],
         [
+            'text' => 'Webiste IDI Jabar',
+            'url' => 'http://idijabar.com/',
+            'icon' => 'fas fa-globe',
+        ],
+        [
             'text' => 'Dashboard',
             'url' => 'dashboard',
             'icon' => 'fas fa-home',
