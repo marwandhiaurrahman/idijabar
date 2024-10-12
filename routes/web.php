@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('profil', ProfilIndex::class)->name('profil');
     Route::get('role-permission', RolePermission::class)->name('role-permission');
+    Route::get('user', UserIndex::class)->name('user.index');
 
 
     Route::get('suratmasuk-index', SuratMasukIndex::class)->name('suratmasuk.index');
@@ -43,5 +44,4 @@ Route::middleware('auth')->group(function () {
     Route::get('suratkeluar-index', SuratMasuk::class)->name('suratkeluar.index');
     Route::get('pengurus-index', PengurusIndex::class)->name('pengurus.index');
     Route::get('struktur-index', StrukturIndex::class)->name('struktur.index');
-    Route::get('user-index', UserIndex::class)->name('user.index');
 });

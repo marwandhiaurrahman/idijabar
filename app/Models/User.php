@@ -3,37 +3,23 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
+    protected $guarded = ['id'];
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-
-    public function pengurus()
-    {
-        return $this->hasOne(Pengurus::class);
-    }
     public function adminlte_image()
     {
         if ($this->avatar) {
@@ -45,5 +31,9 @@ class User extends Authenticatable
     public function adminlte_profile_url()
     {
         return route('profil');
+    }
+    public function pengurus()
+    {
+        return $this->hasOne(Pengurus::class);
     }
 }

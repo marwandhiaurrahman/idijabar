@@ -363,12 +363,11 @@ return [
         ],
         [
             'text' => 'User',
-            'url' => 'user-index',
+            'url' => 'user',
+            'can' => 'admin',
             'icon' => 'fas fa-users',
-            'can' => 'user',
-
+            'active'  => ['user', 'user/create', 'user/edit/*'],
         ],
-
         [
             'text' => 'Profil',
             'url' => 'profil',
